@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Home, FileText, BarChart3, Calendar, FolderOpen, Bell, User, Headphones, LogOut, Search, ChevronDown, Phone, MessageCircle, Mail, Upload, CreditCard, Menu, X } from 'lucide-react';
+﻿import { useState } from 'react';
+import { Home, FileText, BarChart3, Calendar, FolderOpen, Bell, User, Headphones, LogOut, Search, ChevronDown, Phone, MessageCircle, Mail, Upload, CreditCard, Menu, X, Check } from 'lucide-react';
 import { useNavigation } from './AppRouter';
 
 export function UserDashboard() {
@@ -253,7 +253,7 @@ export function UserDashboard() {
                           : '#E5E7EB',
                     }}
                   >
-                    {step.status === 'completed' && <span className="text-white text-xl">âœ“</span>}
+                    {step.status === 'completed' && <Check className="w-6 h-6 text-white" strokeWidth={3} />}
                     {step.status === 'current' && (
                       <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                     )}

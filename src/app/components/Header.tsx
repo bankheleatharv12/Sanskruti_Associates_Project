@@ -85,12 +85,13 @@ export function Header() {
               }}
             >
               <motion.img
-                src="/src/imports/ChatGPT_Image_May_3,_2026,_08_05_15_PM.png"
+                src="/bank logos/Main_logo.jpeg"
                 alt="Sanskruti Associates Logo"
-                className="h-12 w-auto"
+                className="h-16 w-auto"
                 style={{ 
                   mixBlendMode: 'lighten',
-                  filter: 'drop-shadow(0 4px 8px rgba(22,163,74,0.3))'
+                  filter: 'drop-shadow(0 4px 8px rgba(22,163,74,0.3))',
+                  maxWidth: '280px'
                 }}
                 whileHover={{
                   filter: 'drop-shadow(0 6px 12px rgba(22,163,74,0.5)) brightness(1.1)'

@@ -85,15 +85,7 @@ export function LoginRegister() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/src/imports/WhatsApp_Image_2026-05-05_at_4.25.22_PM.jpeg"
-          alt="Background"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
+    <div className="min-h-screen relative overflow-hidden bg-gray-50">
       <button
         onClick={() => navigateTo('homepage')}
         className="fixed top-24 right-4 sm:right-6 z-50 flex items-center gap-2 px-4 sm:px-6 py-3 bg-[#2563EB] text-white rounded-lg hover:bg-[#1E40AF] transition-colors shadow-lg"
@@ -102,7 +94,7 @@ export function LoginRegister() {
         Home
       </button>
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 py-12">
+      <div className="min-h-screen flex items-center justify-center px-4 py-12">
         <div
           className="w-full max-w-md"
           style={{
@@ -114,11 +106,11 @@ export function LoginRegister() {
             boxShadow: '0 8px 32px rgba(37, 99, 235, 0.15)',
           }}
         >
-          <div className="text-center mb-6">
+          <div className="text-center mb-8">
             <img
-              src="/src/imports/ChatGPT_Image_May_3,_2026,_08_05_15_PM.png"
+              src="/bank logos/Main_logo.jpeg"
               alt="Sanskruti Associates Logo"
-              className="h-16 w-auto mx-auto mb-4"
+              className="h-32 w-auto mx-auto mb-4"
             />
           </div>
 
