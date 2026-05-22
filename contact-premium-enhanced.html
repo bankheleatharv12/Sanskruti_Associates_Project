@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Sanskruti Associates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F4F6FA;
+  color: #0A1628;
+  line-height: 1.6;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #0A1628;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.card-glow-wrapper {
+  position: relative;
+  border-radius: 16px;
+  background: white;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
+  padding: 32px;
+}
+
+.card-glow-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--accent), transparent 60%);
+  z-index: -1;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.card-glow-wrapper:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(var(--accent-rgb), 0.25);
+}
+
+.card-glow-wrapper:hover::before {
+  opacity: 1;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.contact-card {
+  text-align: center;
+}
+
+.contact-card .icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  background: linear-gradient(135deg, var(--accent), rgba(var(--accent-rgb), 0.7));
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover .icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0A1628;
+}
+
+.contact-card .detail {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.contact-card .subtext {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.cta-button {
+  display: inline-block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background: var(--accent);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.cta-button:hover::after {
+  left: 150%;
+}
+
+.office-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.office-section h2,
+.branches-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #0A1628;
+}
+
+.office-card p {
+  color: #64748b;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.map-placeholder {
+  background: #e2e8f0;
+  border-radius: 12px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.branch-card {
+  margin-bottom: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  position: relative;
+}
+
+.branch-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0A1628;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branch-tag {
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.branch-tag.head-office {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.branch-tag.branch {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.branch-card p {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.map-label {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.branch-card:hover .map-label {
+  opacity: 1;
+}
+
+.business-hours {
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.business-hours h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #0A1628;
+  text-align: center;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+.hours-row .day {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.status-dot.open {
+  background: #00C851;
+}
+
+.status-dot.closed {
+  background: #EF4444;
+}
+
+.status-dot.open::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid #00C851;
+  animation: ping 1.5s ease-out infinite;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.hours-row .time {
+  font-weight: 600;
+  color: #0A1628;
+}
+
+.hours-row .time.closed {
+  color: #EF4444;
+}
+
+.contact-form-section {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-form-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0A1628;
+  text-align: center;
+}
+
+.contact-form-section .subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #00C851;
+  box-shadow: 0 0 0 4px rgba(0,200,81,0.12);
+  background: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 16px;
+  background: #00C851;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,200,81,0.3);
+}
+
+.submit-button.sending {
+  background: #00C851;
+  pointer-events: none;
+}
+
+.submit-button.sent {
+  background: #059669;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-ready {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+.animate-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ready {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .office-branches {
+    grid-template-columns: 1fr;
+  }
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  body {
+    padding: 20px 16px;
+  }
+  .card-glow-wrapper {
+    padding: 24px;
+  }
+}
+
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 40px;
+}
+
+.success-message.show {
+  display: block;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: #00C851;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+  color: white;
+}
+
+.success-message h3 {
+  font-size: 1.8rem;
+  color: #0A1628;
+  margin-bottom: 12px;
+}
+
+.success-message p {
+  color: #64748b;
+}
+</style>
+</head>
+<body>
+<div id="scroll-bar" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#00D4AA,#FFD700);z-index:9999;transition:width 0.1s linear;"></div>
+
+<div class="container">
+<div class="page-header">
+<h1>Contact Us</h1>
+<p>We are here to help you find the best loan deal</p>
+</div>
+
+<div class="contact-cards">
+<div class="card-glow-wrapper contact-card" style="--accent:#00C851; --accent-rgb:0,200,81">
+<div class="icon-wrapper">📞</div>
+<h3>Call Us</h3>
+<p class="detail">7758 96 9798 / 9921 37 4565</p>
+<p class="subtext">Mon-Sat: 9AM to 7PM</p>
+<a href="tel:+917758969798" class="cta-button">Call Now</a>
+</div>
+
+<div class="card-glow-wrapper contact-card" style="--accent:#00D4AA; --accent-rgb:0,212,170">
+<div class="icon-wrapper">💬</div>
+<h3>WhatsApp Us</h3>
+<p class="detail">7758 96 9798</p>
+<p class="subtext">Quick response guaranteed</p>
+<a href="https://wa.me/917758969798" target="_blank" class="cta-button">Chat Now</a>
+</div>
+
+<div class="card-glow-wrapper contact-card" style="--accent:#4F6BED; --accent-rgb:79,107,237">
+<div class="icon-wrapper">✉️</div>
+<h3>Email Us</h3>
+<p class="detail">sanskruti.sss1108@gmail.com</p>
+<p class="subtext">Reply within 24 hours</p>
+<a href="mailto:sanskruti.sss1108@gmail.com" class="cta-button">Send Email</a>
+</div>
+</div>
+
+<div class="office-branches">
+<div class="office-section">
+<h2>Our Office</h2>
+<div class="card-glow-wrapper office-card" style="--accent:#00D4AA; --accent-rgb:0,212,170">
+<p><strong>Shop No. 11 Second Floor</strong><br>Subhadra Mall, Front of Reliance Smart MIDC<br>Baramati Dist-Pune 413133</p>
+<div class="map-placeholder">🗺️</div>
+<a href="https://maps.google.com/?q=Shop+No.+11+Second+Floor+Subhadra+Mall+Front+of+Reliance+Smart+MIDC+Baramati+Dist+Pune+413133" target="_blank" class="cta-button" style="--accent:#2563eb; --accent-rgb:37,99,235; background:#2563eb">Get Directions</a>
+</div>
+</div>
+
+<div class="branches-section">
+<h2>Our Branches</h2>
+
+<a href="https://maps.google.com/?q=Shop+No.+11+Second+Floor+Subhadra+Mall+Front+of+Reliance+Smart+MIDC+Baramati+Dist+Pune+413133" target="_blank" class="card-glow-wrapper branch-card" style="--accent:#00D4AA; --accent-rgb:0,212,170">
+<h4>Baramati<span class="branch-tag head-office">HEAD OFFICE</span></h4>
+<p>Shop No. 11 Second Floor, Subhadra Mall, Front of Reliance Smart MIDC, Baramati Dist-Pune 413133</p>
+<span class="map-label">📍 View on Map →</span>
+</a>
+
+<a href="https://maps.google.com/?q=Pune+Maharashtra" target="_blank" class="card-glow-wrapper branch-card" style="--accent:#FFD700; --accent-rgb:255,215,0">
+<h4>Pune<span class="branch-tag branch">BRANCH</span></h4>
+<p>Pune, Maharashtra</p>
+<span class="map-label">📍 View on Map →</span>
+</a>
+
+<a href="https://maps.google.com/?q=Mumbai+Maharashtra" target="_blank" class="card-glow-wrapper branch-card" style="--accent:#A855F7; --accent-rgb:168,85,247">
+<h4>Mumbai<span class="branch-tag branch">BRANCH</span></h4>
+<p>Mumbai, Maharashtra</p>
+<span class="map-label">📍 View on Map →</span>
+</a>
+
+<a href="https://maps.google.com/?q=Kolhapur+Maharashtra" target="_blank" class="card-glow-wrapper branch-card" style="--accent:#F97316; --accent-rgb:249,115,22">
+<h4>Kolhapur<span class="branch-tag branch">BRANCH</span></h4>
+<p>Kolhapur, Maharashtra</p>
+<span class="map-label">📍 View on Map →</span>
+</a>
+
+<a href="https://maps.google.com/?q=Saswad+Maharashtra" target="_blank" class="card-glow-wrapper branch-card" style="--accent:#00C851; --accent-rgb:0,200,81">
+<h4>Saswad<span class="branch-tag branch">BRANCH</span></h4>
+<p>Saswad, Maharashtra</p>
+<span class="map-label">📍 View on Map →</span>
+</a>
+
+<a href="https://maps.google.com/?q=Tembhurni+Maharashtra" target="_blank" class="card-glow-wrapper branch-card" style="--accent:#4F6BED; --accent-rgb:79,107,237">
+<h4>Tembhurni<span class="branch-tag branch">BRANCH</span></h4>
+<p>Tembhurni, Maharashtra</p>
+<span class="map-label">📍 View on Map →</span>
+</a>
+</div>
+</div>
+
+<div class="card-glow-wrapper business-hours" style="--accent:#00D4AA; --accent-rgb:0,212,170">
+<h2>Business Hours</h2>
+<div class="hours-row">
+<div class="day"><span class="status-dot open"></span>Mon–Fri</div>
+<div class="time">9:00 AM – 7:00 PM</div>
+</div>
+<div class="hours-row">
+<div class="day"><span class="status-dot open"></span>Saturday</div>
+<div class="time">9:00 AM – 5:00 PM</div>
+</div>
+<div class="hours-row">
+<div class="day"><span class="status-dot closed"></span>Sunday</div>
+<div class="time closed">Closed</div>
+</div>
+</div>
+
+<div class="card-glow-wrapper contact-form-section" style="--accent:#00C851; --accent-rgb:0,200,81">
+<h2>Send Us a Message</h2>
+<p class="subtitle">We will get back to you within 24 hours</p>
+<form id="contactForm">
+<div class="form-group form-field">
+<label for="fullName">Full Name *</label>
+<input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+</div>
+
+<div class="form-group form-field">
+<label for="phone">Phone Number *</label>
+<input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+</div>
+
+<div class="form-group form-field">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="Enter your email">
+</div>
+
+<div class="form-row">
+<div class="form-group form-field">
+<label for="loanType">Loan Type</label>
+<select id="loanType" name="loanType">
+<option value="">Select loan type</option>
+<option value="home">Home Loan</option>
+<option value="personal">Personal Loan</option>
+<option value="business">Business Loan</option>
+<option value="car">Car Loan</option>
+<option value="lap">Loan Against Property</option>
+<option value="ccod">CC/OD</option>
+<option value="machinery">Machinery Loan</option>
+</select>
+</div>
+
+<div class="form-group form-field">
+<label for="loanAmount">Loan Amount</label>
+<select id="loanAmount" name="loanAmount">
+<option value="">Select amount</option>
+<option value="under5">Under 5L</option>
+<option value="5-25">5L - 25L</option>
+<option value="25-1cr">25L - 1Cr</option>
+<option value="above1cr">Above 1Cr</option>
+</select>
+</div>
+</div>
+
+<div class="form-group form-field">
+<label for="message">Message</label>
+<textarea id="message" name="message" placeholder="Tell us about your requirements..."></textarea>
+</div>
+
+<button type="submit" class="submit-button" id="submitBtn">
+<span id="btnText">Send Message</span>
+<span>✈️</span>
+</button>
+</form>
+
+<div class="success-message" id="successMessage">
+<div class="success-icon">✓</div>
+<h3>Message Sent Successfully!</h3>
+<p>We will get back to you within 24 hours</p>
+</div>
+</div>
+</div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('scroll-bar').style.width = pct + '%';
+});
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  
+  btn.classList.add('sending');
+  btnText.innerHTML = '<span class="spinner"></span>';
+  
+  setTimeout(() => {
+    btn.classList.remove('sending');
+    btn.classList.add('sent');
+    btnText.textContent = '✓ Message Sent!';
+    
+    setTimeout(() => {
+      this.style.display = 'none';
+      document.getElementById('successMessage').classList.add('show');
+      
+      setTimeout(() => {
+        this.reset();
+        this.style.display = 'block';
+        document.getElementById('successMessage').classList.remove('show');
+        btn.classList.remove('sent');
+        btnText.textContent = 'Send Message';
+      }, 3000);
+    }, 800);
+  }, 1500);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transitionDelay = (entry.target.dataset.delay || 0) + 'ms';
+      entry.target.classList.add('animate-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.card-glow-wrapper, .section-title, .form-field').forEach((el, i) => {
+  el.classList.add('animate-ready');
+  el.dataset.delay = (i % 4) * 100;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
