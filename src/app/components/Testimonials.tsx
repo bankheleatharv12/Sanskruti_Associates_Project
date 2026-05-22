@@ -66,7 +66,7 @@ export function Testimonials() {
           }, 480);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
     if (cardsContainerRef.current) {
@@ -407,7 +407,7 @@ export function Testimonials() {
         }
 
         .card-entrance {
-          opacity: 0;
+          opacity: 1;
           animation: cardEntrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
@@ -704,7 +704,7 @@ export function Testimonials() {
             </>
           )}
 
-          <div className="grid md:grid-cols-3 gap-8" ref={cardsContainerRef}>
+          <div className="grid md:grid-cols-3 gap-8" ref={cardsContainerRef} style={{ minHeight: '400px' }}>
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
@@ -712,15 +712,16 @@ export function Testimonials() {
                 className={`
                   bg-white rounded-2xl p-8 border-2 relative overflow-hidden
                   transition-all duration-400 cursor-pointer
-                  ${cardsInView ? 'card-entrance' : ''}
+                  card-entrance
                   ${cardsInView ? `card-float-${index + 1}` : ''}
                   ${cardsInView ? `border-glow-${index + 1}` : ''}
                   hover:scale-103 hover:-translate-y-3.5 hover:bg-[#fffdf5]
                 `}
                 style={{
-                  animationDelay: cardsInView ? `${index * 200}ms` : '0s',
+                  opacity: 1,
+                  visibility: 'visible',
+                  animationDelay: `${index * 200}ms`,
                   transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-                  willChange: 'transform',
                 }}
                 onMouseMove={(e) => handleMouseMove(e, index)}
                 onMouseLeave={handleMouseLeave}
@@ -752,7 +753,7 @@ export function Testimonials() {
                       `}
                       style={{
                         animationDelay: starsAnimating ? `${i * 140}ms` : '0s',
-                        color: starsAnimating ? undefined : '#e8e0d0',
+                        color: '#f5c518',
                       }}
                     />
                   ))}
@@ -777,20 +778,19 @@ export function Testimonials() {
                     </div>
                     {/* Avatar circle */}
                     <div
-                      className={`relative w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#1E40AF] rounded-full flex items-center justify-center text-white text-lg ${
-                        cardsInView ? 'avatar-pop' : ''
-                      }`}
+                      className="relative w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#1E40AF] rounded-full flex items-center justify-center text-white text-lg avatar-pop"
                       style={{
-                        animationDelay: cardsInView ? `${index * 0.2 + 0.6}s` : '0s',
+                        animationDelay: `${index * 0.2 + 0.6}s`,
                       }}
                     >
                       {testimonial.name.charAt(0)}
                     </div>
                   </div>
                   <div
-                    className={cardsInView ? 'name-slide' : 'opacity-0'}
+                    className="name-slide"
                     style={{
-                      animationDelay: cardsInView ? `${index * 0.2 + 0.7}s` : '0s',
+                      opacity: 1,
+                      animationDelay: `${index * 0.2 + 0.7}s`,
                     }}
                   >
                     <div className="text-[#1F2937] font-semibold transition-all duration-300 hover:text-[#2563EB] hover:tracking-wide">

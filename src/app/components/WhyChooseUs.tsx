@@ -109,127 +109,6 @@ export function WhyChooseUs() {
       className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden py-24 lg:py-32"
     >
       <style>{`
-        /* Breathing gradient overlay */
-        @keyframes breathingGradient {
-          0%, 100% {
-            background: rgba(10, 15, 40, 0.82);
-          }
-          50% {
-            background: rgba(5, 25, 60, 0.88);
-          }
-        }
-
-        .breathing-overlay {
-          animation: breathingGradient 5s ease-in-out infinite;
-        }
-
-        /* Floating orbs */
-        @keyframes floatOrb1 {
-          0%, 100% { transform: translate(0, 0); }
-          33% { transform: translate(30px, -40px); }
-          66% { transform: translate(-20px, 30px); }
-        }
-
-        @keyframes floatOrb2 {
-          0%, 100% { transform: translate(0, 0); }
-          33% { transform: translate(-40px, 30px); }
-          66% { transform: translate(25px, -35px); }
-        }
-
-        @keyframes floatOrb3 {
-          0%, 100% { transform: translate(0, 0); }
-          33% { transform: translate(35px, 25px); }
-          66% { transform: translate(-30px, -20px); }
-        }
-
-        @keyframes floatOrb4 {
-          0%, 100% { transform: translate(0, 0); }
-          33% { transform: translate(-25px, -30px); }
-          66% { transform: translate(40px, 20px); }
-        }
-
-        @keyframes floatOrb5 {
-          0%, 100% { transform: translate(0, 0); }
-          33% { transform: translate(20px, 35px); }
-          66% { transform: translate(-35px, -25px); }
-        }
-
-        .orb {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(60px);
-          pointer-events: none;
-          opacity: 0.4;
-        }
-
-        .orb-1 {
-          width: 300px;
-          height: 300px;
-          background: rgba(34, 197, 94, 0.3);
-          top: 10%;
-          left: 10%;
-          animation: floatOrb1 12s ease-in-out infinite;
-        }
-
-        .orb-2 {
-          width: 250px;
-          height: 250px;
-          background: rgba(59, 130, 246, 0.3);
-          top: 60%;
-          right: 15%;
-          animation: floatOrb2 15s ease-in-out infinite;
-          animation-delay: 2s;
-        }
-
-        .orb-3 {
-          width: 200px;
-          height: 200px;
-          background: rgba(34, 197, 94, 0.25);
-          bottom: 20%;
-          left: 20%;
-          animation: floatOrb3 10s ease-in-out infinite;
-          animation-delay: 4s;
-        }
-
-        .orb-4 {
-          width: 280px;
-          height: 280px;
-          background: rgba(59, 130, 246, 0.25);
-          top: 30%;
-          right: 25%;
-          animation: floatOrb4 13s ease-in-out infinite;
-          animation-delay: 1s;
-        }
-
-        .orb-5 {
-          width: 220px;
-          height: 220px;
-          background: rgba(34, 197, 94, 0.2);
-          bottom: 30%;
-          right: 10%;
-          animation: floatOrb5 11s ease-in-out infinite;
-          animation-delay: 3s;
-        }
-
-        /* Diagonal light sweep */
-        @keyframes diagonalSweep {
-          0% {
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-          }
-          100% {
-            transform: translateX(200%) translateY(200%) rotate(45deg);
-          }
-        }
-
-        .diagonal-sweep {
-          position: absolute;
-          width: 200%;
-          height: 200%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
-          animation: diagonalSweep 8s ease-in-out infinite;
-          pointer-events: none;
-        }
-
         /* Title word reveal for WhyChooseUs (WHITE) */
         @keyframes wordReveal {
           from {
@@ -247,10 +126,7 @@ export function WhyChooseUs() {
           opacity: 0;
           color: white !important;
           animation: wordReveal 0.6s ease-out forwards;
-          will-change: transform, opacity;
         }
-
-        /* Title shimmer sweep - removed to keep text visible */
 
         /* Subtitle fade in */
         @keyframes subtitleFadeIn {
@@ -282,146 +158,6 @@ export function WhyChooseUs() {
         .underline-animate {
           animation: underlineGrow 0.5s ease-out 0.9s forwards;
           width: 0;
-        }
-
-        /* Card floating animation */
-        @keyframes cardFloat {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-8px);
-          }
-        }
-
-        @media (max-width: 768px) {
-          @keyframes cardFloat {
-            0%, 100% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-4px);
-            }
-          }
-        }
-
-        .card-float-1 {
-          animation: cardFloat 4s ease-in-out infinite;
-          animation-delay: 0s;
-          will-change: transform;
-        }
-
-        .card-float-2 {
-          animation: cardFloat 4s ease-in-out infinite;
-          animation-delay: 0.8s;
-          will-change: transform;
-        }
-
-        .card-float-3 {
-          animation: cardFloat 4s ease-in-out infinite;
-          animation-delay: 1.6s;
-          will-change: transform;
-        }
-
-        .card-float-4 {
-          animation: cardFloat 4s ease-in-out infinite;
-          animation-delay: 2.4s;
-          will-change: transform;
-        }
-
-        .card-float-5 {
-          animation: cardFloat 4s ease-in-out infinite;
-          animation-delay: 3.2s;
-          will-change: transform;
-        }
-
-        /* Breathing border glow */
-        @keyframes borderGlow {
-          0%, 100% {
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 0 rgba(34, 197, 94, 0);
-          }
-          50% {
-            border-color: rgba(34, 197, 94, 0.4);
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
-          }
-        }
-
-        .border-glow-1 {
-          animation: borderGlow 3s ease-in-out infinite;
-          animation-delay: 0s;
-        }
-
-        .border-glow-2 {
-          animation: borderGlow 3s ease-in-out infinite;
-          animation-delay: 0.6s;
-        }
-
-        .border-glow-3 {
-          animation: borderGlow 3s ease-in-out infinite;
-          animation-delay: 1.2s;
-        }
-
-        .border-glow-4 {
-          animation: borderGlow 3s ease-in-out infinite;
-          animation-delay: 1.8s;
-        }
-
-        .border-glow-5 {
-          animation: borderGlow 3s ease-in-out infinite;
-          animation-delay: 2.4s;
-        }
-
-        /* Icon pulse */
-        @keyframes iconPulse {
-          0%, 100% {
-            transform: scale(1.0);
-            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.25);
-          }
-          50% {
-            transform: scale(1.06);
-            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.4);
-          }
-        }
-
-        .icon-pulse {
-          animation: iconPulse 2.5s ease-in-out infinite;
-          will-change: transform;
-        }
-
-        /* Icon rotation oscillation */
-        @keyframes iconRotate {
-          0%, 100% {
-            transform: rotate(-5deg);
-          }
-          50% {
-            transform: rotate(5deg);
-          }
-        }
-
-        .icon-rotate {
-          animation: iconRotate 3s ease-in-out infinite;
-        }
-
-        /* Rotating ring around icon */
-        @keyframes ringRotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .icon-ring::before {
-          content: '';
-          position: absolute;
-          inset: -4px;
-          border-radius: 50%;
-          background: conic-gradient(from 0deg, transparent, rgba(34, 197, 94, 0.3), transparent);
-          animation: ringRotate 6s linear infinite;
-          opacity: 0.3;
-          pointer-events: none;
         }
 
         /* Card entrance animation */
@@ -464,7 +200,6 @@ export function WhyChooseUs() {
         .premium-card {
           transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
-          will-change: transform;
         }
 
         .premium-card::before {
@@ -536,31 +271,13 @@ export function WhyChooseUs() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .orb,
-          .diagonal-sweep,
-          .card-float-1,
-          .card-float-2,
-          .card-float-3,
-          .card-float-4,
-          .card-float-5,
-          .icon-pulse,
-          .icon-rotate,
-          .icon-ring::before,
-          .border-glow-1,
-          .border-glow-2,
-          .border-glow-3,
-          .border-glow-4,
-          .border-glow-5 {
-            animation: none !important;
-          }
-
           .premium-card::before {
             display: none;
           }
         }
       `}</style>
 
-      {/* Background Image with Parallax */}
+      {/* Background Image with solid dark overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="/src/imports/ChatGPT_Image_May_4,_2026,_03_14_06_PM.png"
@@ -571,18 +288,14 @@ export function WhyChooseUs() {
             transition: 'transform 0.1s ease-out',
           }}
         />
-        {/* Breathing gradient overlay */}
-        <div className="breathing-overlay absolute inset-0"></div>
-
-        {/* Floating orbs */}
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-        <div className="orb orb-4"></div>
-        <div className="orb orb-5"></div>
-
-        {/* Diagonal light sweep */}
-        <div className="diagonal-sweep"></div>
+        {/* Solid dark overlay - cross-browser safe */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundColor: 'rgba(10, 20, 40, 0.72)',
+            pointerEvents: 'none',
+          }}
+        ></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -623,35 +336,33 @@ export function WhyChooseUs() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
-            const floatClass = `card-float-${index + 1}`;
-            const glowClass = `border-glow-${index + 1}`;
 
             return (
               <div
                 key={index}
                 ref={(el) => (cardRefs.current[index] = el)}
-                className={`premium-card text-center group p-6 rounded-2xl ${floatClass} ${glowClass} ${
+                className={`premium-card text-center group p-6 rounded-2xl ${
                   cardsInView ? 'card-entrance' : 'opacity-0'
                 }`}
                 style={{
                   background: 'rgba(255, 255, 255, 0.08)',
                   border: '1px solid rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(10px)',
                   animationDelay: cardsInView ? `${index * 0.15}s` : '0s',
                   position: 'relative',
                 }}
                 onMouseMove={(e) => handleMouseMove(e, index)}
               >
-                {/* Icon box with all effects */}
+                {/* Icon box */}
                 <div
-                  className={`icon-box icon-ring relative inline-flex items-center justify-center w-20 h-20 bg-[#16A34A]/20 rounded-2xl mb-4 border border-[#16A34A]/30 icon-pulse ${
+                  className={`icon-box relative inline-flex items-center justify-center w-20 h-20 bg-[#16A34A]/20 rounded-2xl mb-4 border border-[#16A34A]/30 ${
                     cardsInView ? 'icon-pop' : ''
                   }`}
                   style={{
                     animationDelay: cardsInView ? `${index * 0.15 + 0.2}s` : '0s',
+                    boxShadow: '0 8px 24px rgba(34, 197, 94, 0.25)',
                   }}
                 >
-                  <Icon className="w-10 h-10 text-[#16A34A] icon-rotate" />
+                  <Icon className="w-10 h-10 text-[#16A34A]" />
                 </div>
 
                 <h3 className="card-title text-lg text-white mb-2">{benefit.title}</h3>

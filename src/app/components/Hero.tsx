@@ -56,10 +56,10 @@ export function Hero() {
   };
 
   const backgroundVideos = [
-    { src: '/hero-video.mp4', title: 'Coin video' },
-    { src: '/Indian_couple_holding_documents_%E2%80%A6_202605182300.mp4', title: 'Indian couple video' },
-    { src: '/Indian_businessman_communicating%E2%80%A6_202605191320.mp4', title: 'Indian businessman video' },
-    { src: '/Your_Role__You_are_a_202605191349.mp4', title: 'Extra finance video' },
+    { src: '/videos/Indian_1_Rupee_coin_rolling_202605221840.mp4', title: 'Indian 1 Rupee coin rolling', position: 'center center', scale: 1.15 },
+    { src: '/Indian_couple_holding_documents_%E2%80%A6_202605182300.mp4', title: 'Indian couple video', position: 'center center', scale: 1.15 },
+    { src: '/Indian_businessman_communicating%E2%80%A6_202605191320.mp4', title: 'Indian businessman video', position: 'center center', scale: 1.15 },
+    { src: '/Your_Role__You_are_a_202605191349.mp4', title: 'Extra finance video', position: 'center center', scale: 1.15 },
   ];
 
   // Video carousel
@@ -126,98 +126,29 @@ export function Hero() {
   const headlineWords = "Get the Best Loan Deals from Multiple Banks".split(' ');
 
   return (
-    <section className="hero-section relative bg-gradient-to-br from-[#2563EB] to-[#1E40AF] text-white overflow-hidden">
+    <section 
+      className="hero-section relative text-white overflow-hidden"
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: '100vh',
+        backgroundColor: '#0a143c', /* dark navy fallback if video fails */
+      }}
+    >
       <style>{`
-        /* Ken Burns zoom effect on background */
-        @keyframes kenBurns {
-          0% { transform: scale(1.0); }
-          100% { transform: scale(1.08); }
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-          .ken-burns-video {
-            animation: kenBurns 12s ease-in-out infinite alternate;
-          }
-        }
-
-        /* Breathing gradient overlay */
-        @keyframes breathingGradient {
-          0%, 100% { opacity: 0.75; background: linear-gradient(135deg, rgba(10, 15, 40, 0.75) 0%, rgba(5, 25, 60, 0.80) 100%); }
-          50% { opacity: 0.85; background: linear-gradient(135deg, rgba(5, 25, 60, 0.80) 0%, rgba(10, 15, 40, 0.75) 100%); }
-        }
-
-        .breathing-overlay {
-          animation: breathingGradient 4s ease-in-out infinite;
-        }
-
-        /* Floating particles */
-        @keyframes floatUp {
-          0% { transform: translateY(0) translateX(0); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
-        }
-
-        .particle {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          background: rgba(255, 255, 255, 0.6);
-          border-radius: 50%;
-          pointer-events: none;
-          animation: floatUp 8s ease-in infinite;
-          box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        @media (max-width: 768px) {
-          .particle:nth-child(n+6) { display: none; }
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 1.5s; animation-duration: 8s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 3s; animation-duration: 9s; }
-        .particle:nth-child(4) { left: 45%; animation-delay: 0.8s; animation-duration: 7.5s; }
-        .particle:nth-child(5) { left: 55%; animation-delay: 2.2s; animation-duration: 8.5s; }
-        .particle:nth-child(6) { left: 65%; animation-delay: 1s; animation-duration: 7.8s; }
-        .particle:nth-child(7) { left: 75%; animation-delay: 2.8s; animation-duration: 8.2s; }
-        .particle:nth-child(8) { left: 85%; animation-delay: 0.5s; animation-duration: 9s; }
-        .particle:nth-child(9) { left: 15%; animation-delay: 3.5s; animation-duration: 7.3s; }
-        .particle:nth-child(10) { left: 90%; animation-delay: 1.8s; animation-duration: 8.8s; }
-
-        /* Grain texture overlay */
-        .grain-overlay::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-          opacity: 0.03;
-          pointer-events: none;
-          z-index: 30;
-        }
-
         /* Trust badge animations */
         @keyframes slideInLeft {
           from { transform: translateX(-30px); opacity: 0; }
           to { transform: translateX(0); opacity: 1; }
         }
 
-        @keyframes pulseGlow {
-          0%, 100% { box-shadow: 0 0 8px #22c55e; }
-          50% { box-shadow: 0 0 16px #22c55e, 0 0 24px #22c55e; }
-        }
-
         .trust-badge {
           animation: slideInLeft 0.6s ease-out 0.4s both;
-          will-change: transform, opacity;
         }
 
         .trust-badge:hover {
           transform: translateY(-2px);
           transition: transform 0.3s ease;
-        }
-
-        .trust-badge-icon {
-          animation: pulseGlow 2s ease-in-out infinite;
         }
 
         /* Headline word-by-word reveal */
@@ -229,10 +160,7 @@ export function Hero() {
         .headline-word {
           display: inline-block;
           animation: wordReveal 0.6s ease-out both;
-          will-change: transform, opacity;
         }
-
-        /* Remove shimmer effect - keep text white */
 
         /* Subtext fade in */
         @keyframes fadeInUp {
@@ -242,7 +170,6 @@ export function Hero() {
 
         .subtext {
           animation: fadeInUp 0.6s ease-out 0.9s both;
-          will-change: transform, opacity;
         }
 
         /* Button animations */
@@ -253,31 +180,12 @@ export function Hero() {
 
         .btn-apply {
           animation: buttonSlideUp 0.6s ease-out 1.1s both;
-          will-change: transform, opacity;
           position: relative;
           overflow: hidden;
         }
 
         .btn-emi {
           animation: buttonSlideUp 0.6s ease-out 1.25s both;
-          will-change: transform, opacity;
-        }
-
-        /* Shimmer sweep on Apply Now button */
-        @keyframes shimmerSweep {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-
-        .btn-apply::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          animation: shimmerSweep 3s ease-in-out infinite;
         }
 
         .btn-apply:hover {
@@ -326,17 +234,14 @@ export function Hero() {
 
         .stat-card-1 {
           animation: statSlideUp 0.6s ease-out both;
-          will-change: transform, opacity;
         }
 
         .stat-card-2 {
           animation: statSlideUp 0.6s ease-out 0.2s both;
-          will-change: transform, opacity;
         }
 
         .stat-card-3 {
           animation: statSlideUp 0.6s ease-out 0.4s both;
-          will-change: transform, opacity;
         }
 
         /* Suffix pop-in */
@@ -368,27 +273,6 @@ export function Hero() {
         .star:nth-child(4) { animation-delay: 0.3s; }
         .star:nth-child(5) { animation-delay: 0.4s; }
 
-        /* Floating icon animation */
-        @keyframes floatIcon {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); }
-        }
-
-        .float-icon-1 {
-          animation: floatIcon 3s ease-in-out infinite;
-          will-change: transform;
-        }
-
-        .float-icon-2 {
-          animation: floatIcon 3s ease-in-out 0.5s infinite;
-          will-change: transform;
-        }
-
-        .float-icon-3 {
-          animation: floatIcon 3s ease-in-out 1s infinite;
-          will-change: transform;
-        }
-
         /* Scroll indicator bounce */
         @keyframes bounce {
           0%, 100% { transform: translateY(0); }
@@ -400,39 +284,31 @@ export function Hero() {
           transition: opacity 0.3s ease;
         }
 
-        /* Bottom edge breathing glow */
-        @keyframes breathingGlow {
-          0%, 100% { opacity: 0.4; box-shadow: 0 1px 20px rgba(59, 130, 246, 0.5); }
-          50% { opacity: 1; box-shadow: 0 1px 30px rgba(34, 197, 94, 0.8), 0 1px 40px rgba(59, 130, 246, 0.6); }
-        }
-
-        .bottom-glow {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 1px;
-          animation: breathingGlow 3s ease-in-out infinite;
-        }
-
         @media (prefers-reduced-motion: reduce) {
-          .ken-burns-video,
-          .particle,
-          .trust-badge-icon,
-          .btn-apply::after,
-          .float-icon-1,
-          .float-icon-2,
-          .float-icon-3,
-          .scroll-indicator,
-          .breathing-overlay,
-          .bottom-glow {
+          .trust-badge,
+          .headline-word,
+          .subtext,
+          .btn-apply,
+          .btn-emi,
+          .stat-card-1,
+          .stat-card-2,
+          .stat-card-3,
+          .scroll-indicator {
             animation: none !important;
           }
         }
       `}</style>
 
-      {/* Background videos with Ken Burns effect */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Background videos — layer 1 */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+        zIndex: 0,
+      }}>
         {backgroundVideos.map((video, index) => (
           <video
             key={video.src}
@@ -444,37 +320,49 @@ export function Hero() {
             preload="metadata"
             onError={(e) => {
               console.warn(`Failed to load video: ${video.src}`);
-              // Fallback: hide the video element on error
               e.currentTarget.style.display = 'none';
             }}
-            className={`ken-burns-video absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-linear ${
-              index === activeVideo ? 'opacity-100 z-10' : 'opacity-0 z-0'
-            }`}
-            style={{ objectPosition: 'center center' }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: video.position,
+              transform: `scale(${video.scale})`,
+              opacity: index === activeVideo ? 1 : 0,
+              transition: 'opacity 1000ms ease-linear',
+              zIndex: index === activeVideo ? 1 : 0,
+            }}
           />
         ))}
-
-        {/* Breathing gradient overlay */}
-        <div className="breathing-overlay absolute inset-0 z-20 pointer-events-none" />
-
-        {/* Grain texture overlay */}
-        <div className="grain-overlay absolute inset-0 z-25 pointer-events-none" />
-
-        {/* Floating particles */}
-        <div className="absolute inset-0 z-15 pointer-events-none">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="particle" style={{ bottom: '-10px' }} />
-          ))}
-        </div>
       </div>
 
-      {/* Main content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 z-30">
+      {/* Blue overlay — layer 2 — ONLY EFFECT */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(10, 20, 60, 0.72)',
+          zIndex: 2,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Main content — layer 3 */}
+      <div 
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28"
+        style={{ zIndex: 3 }}
+      >
         <div className="max-w-3xl">
           <div className="space-y-8">
             {/* Trust badge */}
-            <div className="trust-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-              <CheckCircle2 className="trust-badge-icon w-5 h-5 text-[#16A34A]" />
+            <div className="trust-badge inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <CheckCircle2 className="w-5 h-5 text-[#16A34A]" />
               <span className="text-sm">Trusted by 25000+ customers</span>
             </div>
 
@@ -545,7 +433,7 @@ export function Hero() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 {/* Stat 1 — Happy Customers */}
                 <div className={`flex items-center gap-4 group ${hasStarted ? 'stat-card-1' : 'opacity-0'}`}>
-                  <div className="float-icon-1 w-12 h-12 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center justify-center group-hover:bg-green-500/30 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center justify-center group-hover:bg-green-500/30 transition-all duration-300">
                     <Users className="w-6 h-6 text-green-400" />
                   </div>
                   <div>
@@ -569,7 +457,7 @@ export function Hero() {
 
                 {/* Stat 2 — Loans Disbursed */}
                 <div className={`flex items-center gap-4 group ${hasStarted ? 'stat-card-2' : 'opacity-0'}`}>
-                  <div className="float-icon-2 w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
                     <IndianRupee className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
@@ -589,7 +477,7 @@ export function Hero() {
 
                 {/* Stat 3 — Bank and NBFC Partners */}
                 <div className={`flex items-center gap-4 group ${hasStarted ? 'stat-card-3' : 'opacity-0'}`}>
-                  <div className="float-icon-3 w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-500/30 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-500/30 transition-all duration-300">
                     <Building2 className="w-6 h-6 text-purple-400" />
                   </div>
                   <div>
@@ -614,16 +502,13 @@ export function Hero() {
       {/* Scroll indicator */}
       {showScrollIndicator && (
         <div
-          className="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer"
+          className="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
           onClick={scrollToLoans}
-          style={{ opacity: showScrollIndicator ? 1 : 0 }}
+          style={{ opacity: showScrollIndicator ? 1 : 0, zIndex: 3 }}
         >
           <ChevronDown className="w-8 h-8 text-white/70" />
         </div>
       )}
-
-      {/* Bottom breathing glow */}
-      <div className="bottom-glow" />
     </section>
   );
 }
